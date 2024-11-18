@@ -1,0 +1,197 @@
+.sidebar {
+    /* width: 80px; */
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex: 1;
+    padding: 1rem;
+    transition: width 0.3s;
+  }
+  
+  .logo {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .logo-icon {
+    font-size: 2rem;
+    color: #ff6b6b;
+    margin-bottom: 0.5rem;
+  }
+  
+
+
+  .sidebar.open {
+    width: 25%;
+  }
+  
+  .sidebar.closed {
+    width: 5%;
+  }
+  
+  .sidebar-header {
+    display: flex;
+    align-items: center;
+  }
+  
+  .toggle-icon {
+    cursor: pointer;
+    font-size: 1.5rem;
+    margin-right: 10px;
+  }
+  
+  .sidebar-icon {
+    font-size: 1.2rem;
+    margin: 1rem;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -25%;
+    /* width: 25%; */
+    height: 100%;
+    background-color: #333;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .sidebar.open {
+    left: 0;
+  }
+  
+  .toggle-btn {
+    position: absolute;
+    top: 15px;
+    right: -30px;
+    background: #222;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+  }
+  
+  .sidebar-menu {
+    padding: 20px;
+    list-style-type: none;
+  }
+  
+  .sidebar-menu li {
+    margin: 20px 0;
+    cursor: pointer;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -25%;
+    width: 20%;
+    height: 100%;
+    background-color: #333;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+    z-index: 100;
+    padding: 20px;
+  }
+  
+  .sidebar.open {
+    left: 0;
+  }
+  
+  .toggle-btn {
+    position: absolute;
+    top: 15px;
+    right: -30px;
+    background: #222;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+  }
+  
+  .sidebar h3 {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #f5a623;
+    text-align: center;
+  }
+  
+  .sidebar-menu {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .thread-item {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #444;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+  }
+  
+  .thread-item:hover {
+    background-color: #555;
+    color: #f5a623;
+  }
+  
+  .no-threads {
+    color: #aaa;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  .new-chat-button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    background-color: #f5a623;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .new-chat-button:hover {
+    background-color: #ffa94d;
+  }
+  
+
+  .thread-list >li{
+    list-style: none;
+  }

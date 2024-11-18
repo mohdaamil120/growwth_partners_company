@@ -1,0 +1,33 @@
+.chat-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 2rem;
+  }
+  
+  .file-upload-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ff6b6b;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .text-input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .send-button {
+    padding: 10px 15px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
