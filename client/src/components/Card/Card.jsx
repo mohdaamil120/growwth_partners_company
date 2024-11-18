@@ -1,6 +1,6 @@
 import React from "react";
 import * as Icons from "react-icons/fa";
-import "./card.css";
+import "./Card.css";
 
 function Card({ title, subtitle, icon }) {
   const IconComponent = Icons[icon];
