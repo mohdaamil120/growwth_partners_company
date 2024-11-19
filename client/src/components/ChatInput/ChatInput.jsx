@@ -12,6 +12,7 @@ const ChatInput = () => {
   const [loading, setLoading] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const { addMessage, activeThread } = useContext(ChatContext);
+ 
 
 
   const handleFileRemove = () => {
@@ -105,6 +106,11 @@ return(
     type="text"
     value={input}
     onChange={(e) => setInput(e.target.value)}
+    onKeyDown={(e) => {
+      if (e.key === "Enter") {
+        selectedFile ? uploadFile() : sendMessage();
+      }
+    }}
     placeholder={selectedFile ? selectedFile.name : "Ask a financial question..."}
     className="text-input"
   />

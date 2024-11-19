@@ -1,5 +1,5 @@
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { ChatContext } from "../../context/ChatContext"; // Assuming you have a context for chat
 // import "../App.css";
 import "./ChatDisplay.css";
@@ -7,7 +7,13 @@ import axios from "axios";
 
 const ChatDisplay = ({setMessages , messages}) => {
   const { activeThread, setActiveThread, threads } = useContext(ChatContext); 
+  const chatContainerRef = useRef(null);
 
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
+  }, [messages]); // Trigger scroll when messages change
   // const [messages, setMessages] = useState([]); // Local state for storing messages of active thread
 
   // Fetch threads when component mounts
@@ -44,7 +50,7 @@ const ChatDisplay = ({setMessages , messages}) => {
   }
 
   return (
-    <div className="chat-display">
+    <div className="chat-display chat-messages" ref={chatContainerRef}>
       {messages.map((msg, index) => (
         <div
           key={index}
