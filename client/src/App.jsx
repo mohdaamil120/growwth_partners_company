@@ -1,44 +1,4 @@
 
-// import React from 'react';
-// import ChatDisplay from './components/ChatDisplay';
-// import ChatInput from './components/ChatInput';
-// import Sidebar from './components/Sidebar';
-// import { ChatProvider } from './context/ChatContext';
-// import './App.css';
-
-// const App = () => {
-
-
-//   return (
-//     <ChatProvider>
-//       <div className="app-container">
-//         <Sidebar/>
-//         <div className="chat-container">
-//           <ChatDisplay />
-//           <ChatInput />
-//         </div>
-//       </div>
-//     </ChatProvider>
-//   );
-// };
-
-// export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import Sidebar from "./components/sidebar/Sidebar";
 import Header from "./components/Header/Header";
 import Card from "./components/Card/Card";

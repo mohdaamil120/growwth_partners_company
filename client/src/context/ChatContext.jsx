@@ -32,10 +32,6 @@ const ChatProvider = ({ children }) => {
       ...prev,
       [threadId]: [...(prev[threadId] || []), message],
     }));
-
-    // console.log("inside addmessage fun activeThread from context",activeThread)
-    // console.log(" inside addmessage fun threds from context",threads)
-    // console.log("inside addmessage fun messages from context",messages)
   };
 
   // Create a new thread
@@ -47,9 +43,7 @@ const ChatProvider = ({ children }) => {
     };
     setThreads((prev) => [...prev, newThread]);
     setActiveThread(newThreadId);
-    // console.log("activeThread from context",activeThread)
-    // console.log("threds from context",threads)
-    // console.log("messages from context",messages)
+
    
     try {
       await axios.post("http://localhost:8080/api/chat/newChat", {
