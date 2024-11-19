@@ -20,7 +20,7 @@ const ChatDisplay = ({setMessages , messages}) => {
   useEffect(() => {
     const fetchThreads = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/chat");
+        const response = await axios.get("https://growwth-partners-ft04.onrender.com/api/chat");
         // Store threads in context or local state
         // setActiveThread(response.data.threads);
         console.log(response.data.threads)

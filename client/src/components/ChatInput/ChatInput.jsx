@@ -35,7 +35,7 @@ const ChatInput = () => {
     formData.append("file", selectedFile);
 
     try {
-      const response = await axios.post("http://localhost:8080/api/upload", formData, {
+      const response = await axios.post("https://growwth-partners-ft04.onrender.com/api/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -62,7 +62,7 @@ const ChatInput = () => {
      
     try {
  
-      const response = await axios.post("http://localhost:8080/api/chat", {
+      const response = await axios.post("https://growwth-partners-ft04.onrender.com/api/chat", {
         message: input,
         threadId: activeThread,
         newThread: !activeThread,

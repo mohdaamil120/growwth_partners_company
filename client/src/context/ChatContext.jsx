@@ -14,7 +14,7 @@ const ChatProvider = ({ children }) => {
   useEffect(() => {
     const fetchThreads = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/chat");
+        const response = await axios.get("https://growwth-partners-ft04.onrender.com/api/chat");
         setThreads(response.data.threads);
         // setActiveThread(uuidv4());
       } catch (error) {
@@ -46,7 +46,7 @@ const ChatProvider = ({ children }) => {
 
    
     try {
-      await axios.post("http://localhost:8080/api/chat/newChat", {
+      await axios.post("https://growwth-partners-ft04.onrender.com/api/chat/newChat", {
         newThread: true,
         threadId: newThreadId,
       });
