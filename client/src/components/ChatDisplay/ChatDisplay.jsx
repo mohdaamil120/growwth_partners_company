@@ -77,8 +77,9 @@
 
 
 import React, { useContext, useEffect, useState } from "react";
-import { ChatContext } from "../context/ChatContext"; // Assuming you have a context for chat
-import "../App.css";
+import { ChatContext } from "../../context/ChatContext"; // Assuming you have a context for chat
+// import "../App.css";
+import "./ChatDisplay.css";
 import axios from "axios";
 
 const ChatDisplay = ({setMessages , messages}) => {

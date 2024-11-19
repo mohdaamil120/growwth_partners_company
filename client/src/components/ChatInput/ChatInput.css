@@ -1,18 +1,24 @@
 .chat-input {
+    position: relative;
     display: flex;
+    gap: 10px;
     align-items: center;
     gap: 10px;
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
+    width: 57%;
   }
   
   .file-upload-button {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ff6b6b;
+    background: linear-gradient(90deg, #ff7f50, #1e90ff); 
     padding: 10px;
     border-radius: 50%;
     cursor: pointer;
+    color: white;
+    position: absolute;
+    left: 10px;
   }
   
   .text-input {
@@ -20,14 +26,24 @@
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    color: rgb(255, 255, 255);
+    background: linear-gradient(90deg, #ff7f50, #1e90ff); 
+    height: 30px;
+    border-radius: 50px;
+    font-size: 18px;
+    width: 100%;
+    padding-left: 50px;
   }
   
   .send-button {
     padding: 10px 15px;
-    background-color: #4caf50;
     color: white;
     border: none;
+    height: 40px;
     border-radius: 5px;
     cursor: pointer;
+    background: linear-gradient(90deg, #ff7f50, #1e90ff); 
+    position: absolute;
+    right: 20px;
   }
   

@@ -152,17 +152,17 @@ const ChatInput = () => {
       console.error("Message is required!");
       return;
     }
-     console.log("input from line 157 in chatinput",input)
-     console.log("activeThread line 161", activeThread)
+    //  console.log("input from line 157 in chatinput",input)
+    //  console.log("activeThread line 161", activeThread)
      addMessage(activeThread, { role: "user", content: input });
      setInput("");
      setLoading(true);
      
-     console.log("activeThread from line 162 in chatinput",activeThread)
+    //  console.log("activeThread from line 162 in chatinput",activeThread)
     try {
-      console.log("input from line 164 in chatinput",input)
-      // console.log("threadId from line 165 in chatinput",threadId)
-      console.log("activeThread from line 166 in chatinput",activeThread)
+      // console.log("input from line 164 in chatinput",input)
+      // // console.log("threadId from line 165 in chatinput",threadId)
+      // console.log("activeThread from line 166 in chatinput",activeThread)
       const response = await axios.post("http://localhost:8080/api/chat", {
         message: input,
         threadId: activeThread,

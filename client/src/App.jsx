@@ -47,7 +47,7 @@ import { ChatProvider } from './context/ChatContext';
 import { FaUser } from "react-icons/fa";
 import "./App.css";
 import React, { useState } from "react";
-import ChatDisplay from "./components/ChatDisplay";
+import ChatDisplay from "./components/ChatDisplay/ChatDisplay";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -85,7 +85,9 @@ function App() {
                 />
               </div>
             ) : (
-              <ChatDisplay setMessages={setMessages} messages={messages}/>
+             <div className="chat_display_parent">
+               <ChatDisplay setMessages={setMessages} messages={messages}/>
+             </div>
             )}
           </div>
 

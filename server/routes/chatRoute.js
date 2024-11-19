@@ -60,9 +60,9 @@ ChatRouter.post("/", async (req, res) => {
     const userData =  req.app.locals.userData;
     const prompt = `You are a financial assistant. The user has provided the following financial data: ${JSON.stringify(userData)}. Respond to the following message: ${message}`;
    
-    console.log("userData line 62 drom chatRoutes",userData)
+    // console.log("userData line 62 chatRoutes",userData)
     
-    // Fetch the assistant's response (openai logic)
+    // Fetch the assistant's response 
     const assistantInstructions = [
       {
         role: "system",
@@ -75,7 +75,7 @@ ChatRouter.post("/", async (req, res) => {
       model: "gpt-3.5-turbo",
       messages,
       stream: true,
-      max_tokens: 10,
+      max_tokens: 100,
     });
 
     let assistantResponse = "";
@@ -110,43 +110,82 @@ ChatRouter.post("/newChat", async(req,res) => {
       thread = new Thread({
         userId: req.user?.id || "guest_user", 
         threadId : threadId, 
-        messages: [{ role: "user", content: "hello" }],
+        // messages: [{ role: "user", content: "hello" }],
+        messages: [],
       });
       await thread.save();
+      
+
+      const assistantInstructions = [
+        // {
+        //   role: "system",
+        //   content:
+        //     "You are a financial assistant. Provide professional, concise, and formatted responses to user queries.",
+        // },
+      ];
+  
+      const messages = assistantInstructions.concat(thread.messages);
+      const response = await openai.chat.completions.create({
+        model: "gpt-3.5-turbo",
+        messages,
+        stream: true,
+        max_tokens: 10,
+      });
+  
+      // let assistantResponse = "";
+      // for await (const chunk of response) {
+      //   const content = chunk.choices[0]?.delta?.content || "";
+      //   assistantResponse += content;
+      // }
+  
+      // Save assistant's response
+      thread.messages.push({ role: "assistant", content: assistantResponse });
+      await thread.save();
+  
+      // Return the assistant's response and threadId for future communication
+      res.status(200).json({
+        assistantResponse,
+        threadId: thread.threadId, // Returning threadId so frontend can continue with the same thread
+      });
+ 
     }
 
-    // Fetch the assistant's response 
-    const assistantInstructions = [
-      {
-        role: "system",
-        content:
-          "You are a financial assistant. Provide professional, concise, and formatted responses to user queries.",
-      },
-    ];
+    else {
+          // Fetch the assistant's response 
+        const assistantInstructions = [
+          {
+            role: "system",
+            content:
+              "You are a financial assistant. Provide professional, concise, and formatted responses to user queries.",
+          },
+        ];
 
-    const messages = assistantInstructions.concat(thread.messages);
-    const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      messages,
-      stream: true,
-      max_tokens: 100,
-    });
+        const messages = assistantInstructions.concat(thread.messages);
+        const response = await openai.chat.completions.create({
+          model: "gpt-3.5-turbo",
+          messages,
+          stream: true,
+          max_tokens: 100,
+        });
 
-    let assistantResponse = "";
-    for await (const chunk of response) {
-      const content = chunk.choices[0]?.delta?.content || "";
-      assistantResponse += content;
+        let assistantResponse = "";
+        for await (const chunk of response) {
+          const content = chunk.choices[0]?.delta?.content || "";
+          assistantResponse += content;
+        }
+
+        // Save assistant's response
+        thread.messages.push({ role: "assistant", content: assistantResponse });
+        await thread.save();
+
+        // Return the assistant's response and threadId for future communication
+        res.status(200).json({
+          assistantResponse,
+          threadId: thread.threadId, // Returning threadId so frontend can continue with the same thread
+        });
     }
 
-    // Save assistant's response
-    thread.messages.push({ role: "assistant", content: assistantResponse });
-    await thread.save();
-
-    // Return the assistant's response and threadId for future communication
-    res.status(200).json({
-      assistantResponse,
-      threadId: thread.threadId, // Returning threadId so frontend can continue with the same thread
-    });
+  
   } catch (err) {
     console.error("Error communicating with OpenAI while new chat:", err.message);
     res.status(500).json({ error: "Error communicating with OpenAI while new chat" });

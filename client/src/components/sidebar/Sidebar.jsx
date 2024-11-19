@@ -55,8 +55,9 @@
 
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 import { FaBars } from "react-icons/fa"; // Toggle Icon
+import { MdCancel } from "react-icons/md";
 import { ChatContext } from "../../context/ChatContext";
 import "./Sidebar.css";
 
@@ -82,16 +83,25 @@ const Sidebar = ({ toggleSidebar, isSidebarOpen }) => {
     createNewThread();
   };
 
+console.log(threads)
   return (
     <div className={`sidebar ${isSidebarOpen ? "open" : "closed"}`}>
       {/* Toggle Button */}
-      <button className="toggle-btn" onClick={toggleSidebar}>
-        <FaBars size={20} />
-      </button>
+      {
+        !isSidebarOpen ? (
+          <button className="toggle-btn" onClick={toggleSidebar}>
+          <FaBars size={20} />
+          </button>
+        ):(
+          <button className="toggle-btn" onClick={toggleSidebar}>
+          <MdCancel size={30} />
+        </button>
+        )
+      }
 
       {/* Sidebar Content */}
       <div className="sidebar-content">
-        <h3>SayHello Threads</h3>
+        <h3>😊SayHello</h3>
         <ul className="thread-list">
           {threads.length > 0 ? (
             threads.map((thread, i) => (
@@ -100,7 +110,9 @@ const Sidebar = ({ toggleSidebar, isSidebarOpen }) => {
                 onClick={() => setActiveThread(thread.threadId)}
                 className="thread-item"
               >
-                {`Chat ${i + 1} - ${thread.name || `Topic ${i + 1}`}`}
+                {/* {`Chat ${i + 1} - ${thread.name || `Topic ${i + 1}`}`} */}
+                { thread.messages[0].content}
+                
               </li>
             ))
           ) : (
