@@ -23,7 +23,7 @@ const ChatDisplay = ({setMessages , messages}) => {
         const response = await axios.get("https://growwth-partners-ft04.onrender.com/api/chat");
         // Store threads in context or local state
         // setActiveThread(response.data.threads);
-        console.log(response.data.threads)
+        // console.log(response.data.threads)
         setActiveThread(activeThread);
       } catch (error) {
         console.error("Error fetching threads:", error);

@@ -69,8 +69,8 @@ const ChatInput = () => {
       });
 
       const { assistantResponse } = response.data;
-      console.log("activeThrad line 178",activeThread)
-      console.log("assistantResponse line 179",assistantResponse)
+      // console.log("activeThrad line 178",activeThread)
+      // console.log("assistantResponse line 179",assistantResponse)
       addMessage(activeThread, { role: "assistant", content: assistantResponse });
     } catch (error) {
       console.error("Error sending message:", error);

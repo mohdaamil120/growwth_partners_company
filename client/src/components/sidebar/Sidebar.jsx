@@ -29,7 +29,7 @@ const Sidebar = ({ toggleSidebar, isSidebarOpen }) => {
     createNewThread();
   };
 
-console.log(threads)
+// console.log(threads)
   return (
     <div className={`sidebar ${isSidebarOpen ? "open" : "closed"}`}>
       {/* Toggle Button */}

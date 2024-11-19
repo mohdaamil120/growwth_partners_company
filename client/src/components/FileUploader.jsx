@@ -11,7 +11,7 @@ const FileUploader = () => {
     formData.append('file', file);
 
     const response = await axios.post('https://growwth-partners-ft04.onrender.com/api/upload', formData);
-    console.log('File Data:', response.data);
+    // console.log('File Data:', response.data);
   };
 
   return (
