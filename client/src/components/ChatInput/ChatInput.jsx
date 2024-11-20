@@ -28,22 +28,30 @@ const ChatInput = () => {
   };
 
 
+
   const uploadFile = async () => {
-    if (!selectedFile) return;
+    if (!selectedFile) {
+      console.log("setSelectedFile is not here line 34 ",setSelectedFile)
+      return;
+    }
 
     const formData = new FormData();
     formData.append("file", selectedFile);
 
+    console.log('Uploading file:', selectedFile); // Debugging
+    
     try {
+
       const response = await axios.post("https://growwth-partners-ft04.onrender.com/api/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
       const { data } = response.data;
+      console.log('File uploaded line 46:',data);
       addMessage(activeThread, { role: "assistant", content: JSON.stringify(data) });
       setSelectedFile(null); // Clear the file after successful upload
     } catch (error) {
-      console.error("Error uploading file:", error);
+      console.error("Error uploading file:", error.response?.data || error.message);
       addMessage(activeThread, { role: "assistant", content: "Error processing the file." });
     }
   };
@@ -90,8 +98,10 @@ return(
     <input
       id="file-upload"
       type="file"
-      onChange={handleFileUpload}
+      // onChange={handleFileUpload}
+      onChange={(e) => setSelectedFile(e.target.files[0])}
       style={{ display: "none" }}
+      
     />
     {selectedFile && (
       <div className="file-preview">

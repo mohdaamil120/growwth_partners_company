@@ -15,7 +15,10 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage });
+const upload = multer({
+   storage,
+  
+  });
 
 uploadRouter.post('/', upload.single('file'), async (req, res) => {
   try {
@@ -24,8 +27,19 @@ uploadRouter.post('/', upload.single('file'), async (req, res) => {
       return res.status(400).json({ error: 'No file uploaded' });
     }
 
+    const allowedTypes = [
+      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+      'application/vnd.ms-excel',
+    ];
+
+    if (!allowedTypes.includes(req.file.mimetype)) {
+      console.error("Invalid file type:", req.file.mimetype);
+      return res.status(400).json({ error: 'Invalid file type' });
+    }
+
     console.log("Uploaded File Info:", req.file);
     const filePath = req.file.path;
+
 
     // Process the uploaded file
     const jsonData = processFile(filePath);
@@ -35,7 +49,7 @@ uploadRouter.post('/', upload.single('file'), async (req, res) => {
     console.log("Processed Data:", jsonData);
     res.status(200).json({ message: 'File uploaded and processed', data: jsonData });
   } catch (error) {
-    console.error("Error during file processing:", error);
+   console.error("Error occurred while uploading or processing file:", error.message || error);
     res.status(500).json({ error: 'Error processing file' });
   }
 });
