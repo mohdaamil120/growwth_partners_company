@@ -4,13 +4,15 @@
     flex-direction: column;
     gap: 20px;
     padding: 20px;
-    background-color: rgb(252, 221, 221); 
+    /* background: linear-gradient(135deg, #f4ecff, #ffdad9); */
+    background: linear-gradient(135deg, #e8dfff, #ffd7d7);
+
     /* background-color: #f9f9f9;  */
-    /* height: auto; */
+    height: 100vh;
     overflow-y: auto; 
     border: 1px solid #ddd;
     border-radius: 8px;
-    /* scrollbar-width: none; */
+    scrollbar-width: none;
   }
   
  

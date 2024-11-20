@@ -49,7 +49,7 @@ const Sidebar = ({ toggleSidebar, isSidebarOpen }) => {
       <div className="sidebar-content">
         <h3>😊SayHello</h3>
         <ul className="thread-list">
-          {threads.length > 0 ? (
+          {threads.length && threads.length > 0 ? (
             threads.map((thread, i) => (
               <li
                 key={thread.threadId}
@@ -57,8 +57,8 @@ const Sidebar = ({ toggleSidebar, isSidebarOpen }) => {
                 className="thread-item"
               >
                 {/* {`Chat ${i + 1} - ${thread.name || `Topic ${i + 1}`}`} */}
-                { thread.messages[0].content}
-                
+                {/* { thread.messages[0].content} */}
+                {thread.messages?.[0]?.content || "No messages"}
               </li>
             ))
           ) : (

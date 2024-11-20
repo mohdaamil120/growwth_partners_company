@@ -46,7 +46,7 @@ const ChatDisplay = ({setMessages , messages}) => {
 
   // Check if messages for the active thread are available
   if (!messages.length) {
-    return <div className="no-messages">No messages to display</div>;
+    return <></>
   }
 
   return (

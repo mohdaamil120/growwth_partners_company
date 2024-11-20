@@ -15,7 +15,10 @@ const openai = new OpenAI({
 
 ChatRouter.get("/", async (req, res) => {
   try {
-    const threads = await Thread.find({ userId: req.user?.id || "guest_user" }); 
+    const threads = await Thread.find({ userId: req.user?.id || "guest_user" })
+      .sort({ createdAt: -1 }) // Sort threads by createdAt in descending order (most recent first)
+      .limit(25); // Limit the result to 25 threads
+
     res.status(200).json({ threads });
   } catch (err) {
     res.status(500).json({ error: "Error fetching threads" });
